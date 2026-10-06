@@ -2,8 +2,7 @@ import copy
 
 from passlib.hash import bcrypt
 
-# Senha de todas as linhas de seed: "Senha@123"
-# (rounds=4 deixa o hash rápido; é só um dado fictício de teste)
+
 _SENHA_HASH = bcrypt.using(rounds=4).hash("Senha@123")
 
 PLANOS = {
@@ -12,7 +11,6 @@ PLANOS = {
     "ilimitado": {"preco": 99.90, "limite_dados_mb": 50000, "limite_minutos": 1000},
 }
 
-# "Banco de dados" em memória (fictício, apenas para testes/portfólio).
 _LINHAS_SEED = [
     {
         "id": 1,
@@ -49,7 +47,6 @@ proximo_protocolo = 1
 
 
 def resetar():
-    """Restaura o estado inicial. Usado pelos testes para garantir isolamento."""
     global linhas, codigos_reset, portabilidades, proximo_protocolo
     linhas = copy.deepcopy(_LINHAS_SEED)
     codigos_reset = {}
